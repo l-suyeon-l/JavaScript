@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <input id="txt">
+    </div>
+    <script>
+        const box = document.getElementById("box");
+        const txt = document.getElementById("txt");
+
+        // 얘네는 부모 노드로 전파되지 않음.
+        // document.body.addEventListener("focus", () => {
+        //     console.log("focus - 1. body");
+        // })
+        // box.addEventListener("focus", () => {
+        //     console.log("focus - 2. div");
+        // })
+        // txt.addEventListener("focus", () => {
+        //     console.log("focus - 3. input");
+        // })
+        // document.body.addEventListener("blur", () => {
+        //     console.log("blur - 1. body");
+        // })
+        // box.addEventListener("blur", () => {
+        //     console.log("blur - 2. div");
+        // })
+        // txt.addEventListener("blur", () => {
+        //     console.log("blur - 3. input");
+        // })
+
+
+        // 얘네는 부모 노드까지 전파됨
+        // document.body.addEventListener("focusin", () => {
+        //     console.log("focusin - 1. body");
+        // })
+        // box.addEventListener("focusin", () => {
+        //     console.log("focusin - 2. div");
+        // })
+        // txt.addEventListener("focusin", () => {
+        //     console.log("focusin - 3. input");
+        // })
+        // document.body.addEventListener("focusout", () => {
+        //     console.log("focusout - 1. body");
+        // })
+        // box.addEventListener("focusout", () => {
+        //     console.log("focusout - 2. div");
+        // })
+        // txt.addEventListener("focusout", () => {
+        //     console.log("focusout - 3. input");
+        // })
+
+        
+        // 이벤트 버블링을 인위적으로 막는 방법 : 이벤트 객체에 stopPropagation()
+        document.body.addEventListener("focusin", () => {
+            console.log("focusin - 1. body");
+        })
+        box.addEventListener("focusin", () => {
+            console.log("focusin - 2. div");
+        })
+        txt.addEventListener("focusin", (event) => {
+            event.stopPropagation();
+            console.log("focusin - 3. input");
+        })
+        document.body.addEventListener("focusout", () => {
+            console.log("focusout - 1. body");
+        })
+        box.addEventListener("focusout", () => {
+            console.log("focusout - 2. div");
+        })
+        txt.addEventListener("focusout", (event) => {
+            event.stopPropagation();
+            console.log("focusout - 3. input");
+        })
+    </script>
+</body>
+</html>

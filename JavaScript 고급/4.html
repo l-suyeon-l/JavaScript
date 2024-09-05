@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="box bg-red">BOX</div>
+    <ul id="color">
+        <li>Red</li>
+        <li>Green</li>
+        <li>Blue</li>
+    </ul>
+    <script type="text/javascript">
+        const box = document.getElementById("box");
+        const color = document.getElementsByTagName("color");
+
+        box.style.backgroundColor = 'red';  // css에서는 background-color이지만, html에서는 카멜케이스 방식으로 작성한다
+        box.style['background-color'] = 'red';
+        box.style.color = '#fff';
+        box.style.width = '100px';
+        box.style.height = '100px';
+
+        // 여러 속성을 동시에 적는 단축 속성도 문자열로 작성하면 됨
+        box.style.border = "10px solid #000";
+
+
+        color.onclick = function(e) {       // id가 color인 ul의 특정요소를 클릭했을 때
+            const target = e.target;
+            if (target.tagName !== "LI") return;    // li가 아니면 리턴 
+            target.classList.toggle("txt-pink");    // li이면 li의 클래스리스트에 'txt-pink' 요소가 없으면 추가, 있으면 제거
+        };
+
+    </script>
+</body>
+</html>

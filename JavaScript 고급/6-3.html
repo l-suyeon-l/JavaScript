@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box">
+        <ul id="list">
+            <li id="red" class="on">Red</li>
+            <li id="blue">Blue</li>
+            <li id="green">Green</li>
+            <li id="pink">Pink</li>
+        </ul>
+    </div>
+    <script>
+        const list = document.getElementById("list");
+        const colors = list.children;
+
+        function clickHandler(event) {
+            for (c of colors) {
+                c.classList.remove("on");
+            }
+            event.target.classList.add("on");
+        }
+
+        // document.getElementById("red").addEventListener("click", clickHandler);
+        // document.getElementById("blue").addEventListener("click", clickHandler);
+        // document.getElementById("green").addEventListener("click", clickHandler);
+        // document.getElementById("pink").addEventListener("click", clickHandler);
+        document.getElementById("list").addEventListener("click", clickHandler);
+        // => li 태그에 이벤트를 적용하는 것보다 li 태그가 모두 포함된 ul 태그에 이벤트를 적용하는 것이 좋다
+        // li 개수에 상관없이 한 줄로, 코드 수정이 필요하지 않아 유지보수에도 좋음
+        // 가능한 이유는 "이벤트 버블링" 때문이다.
+        // li의 부모노드인 ul에 이벤트 버블링이 발생한 것
+        
+    </script>
+</body>
+</html>

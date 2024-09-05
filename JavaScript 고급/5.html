@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="alert('click')">클릭1</button>
+    <button onclick="sayHello()">클릭2</button>
+    <button id="btn">클릭3</button>
+    <button id="btn2">클릭4</button>
+    <button id="btn3">클릭5</button>
+    
+    <input id="txt" type="text"/>
+
+    
+    
+    <script>
+        function sayHello() {
+            alert('Hello');
+        }
+        function double() {
+            alert('더블클릭을 하셧네욤.');
+        }
+
+        const el = document.getElementById("btn");
+        el.onclick = sayHello;      // 함수 호출 뒤에 괄호 없어야 함. 괄호가 있으면 함수의 반환값이 호출됨(리턴값이 없으므로 undefined)
+
+        
+
+
+        // addEventListener : 특정 이벤트(첫번째 인자)가 발생하면 함수(두번째 인자)가 실행된다
+        const el2 = document.getElementById("btn2");
+        // el2.addEventListener('click', sayHello);
+        el2.addEventListener("click", () => {
+            alert("Hi~~~");     // 함수 선언->인자로 전달하지 않고, 화살표 함수로 바로 선언&전달할 수 있다
+        });
+
+
+
+        // 이벤트 'DOMContentLoaded' : 문서 로드가 완료되었을 때 발생
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.style.backgroundColor = "lightgray";
+        })
+        // 아래는 반응하지 않음. 그래서 되도록이면 addEventListener를 사용하는 것이 좋음
+        document.onDOMContentLoaded = () => {
+            document.body.style.backgroundColor = "red";
+        };
+
+        
+
+        // 이벤트 'removeEventListener' : 이미 할당된 핸들러를 삭제할 때 사용
+        document.removeEventListener("DOMContentLoaded", () => {
+            document.body.style.backgroundColor = "red";
+        });
+
+
+
+
+        // 그 외 자주 쓰는 이벤트들
+        const el3 = document.getElementById("btn3");
+        el3.addEventListener("dblclick", double);  // 더블클릭 시 함수 실행
+
+        const input = document.getElementById('txt');
+        input.addEventListener("keyup", (event) => {    // 이 핸들러는 event 객체를 인수로 받음
+            console.log(event);                         // 콘솔에서 입력받은 키 정보 확인 가능
+            console.log(event.key);                     // 입력받은 키 콘솔에서 확인가능
+        });
+
+
+        // input 이벤트 : focus/focus in, blur/focus out
+        // focus - input창에 포커스가 가면 발생
+        // blur - 포커스를 잃을 때 발생
+        input.addEventListener("focus", () => {         // 포커스 됐을 때 배경색 바꿔주기
+            input.style.backgroundColor = 'rgba(255, 0, 0, 0.2)';
+        });
+        input.addEventListener("blur", () => {          // 포커스를 잃으면 배경색 초기화
+            input.style.backgroundColor = null;
+        });
+    </script>
+</body>
+</html>
