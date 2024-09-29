@@ -50,7 +50,7 @@ const user = {
 }
 
 const cloneUser = user;     // user 객체가 복제되지 않음
-// user변수에는 객체 자체가 저장되어 있는 것이 아니라, 객체가 저장되어 있는 메모리 주소(객체에 대한 참조값)이 저장됨
+// user변수에는 객체 자체가 저장되어 있는 것이 아니라, 객체가 저장되어 있는 메모리 주소(객체에 대한 참조값)가 저장됨
 // 따라서 cloneUser에는 객체에 대한 참조값이 복제되는 것임
 // 그렇게 되면 하나의 변수에 두 객체가 접근하게 됨
 
@@ -111,7 +111,7 @@ Object.values(user);
 
 
 
-// Object.entries() : 키/값 배열 반환
+// Object.entries() : 객체의 키/값 배열로 반환
 const user = {
     name : 'Mike',
     age : 30,

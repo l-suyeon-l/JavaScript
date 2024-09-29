@@ -3,10 +3,6 @@
 
 
 
-
-
-
-
 // var은 한 번 선언된 변수를 다시 선언할 수 있다.
 var name = 'Mike';
 console.log(name);      // Mike
@@ -46,9 +42,10 @@ name = 'Mike';
 // let은 선언하기 전에 사용할 수 없다.
 console.log(name);      // ReferenceError
 let name = 'Mike';
+
 // let, const도 호이스팅됨.
 // 호이스팅은 스코프 내부 어디서든 변수 선언은 최상위에 선언된 것처럼 행동함.
-// 그런데 why?
+// 그런데 why? (let, const는 선언하기 전에 사용할 수 없을까?)
 
 // TDZ(Temporal Dead Zone) 때문이다.
 console.log(name);          // Temporal Dead Zone
@@ -63,7 +60,7 @@ let age = 30;
 function showAge() {
     console.log(age);
 
-    let age = 20;       // 함수 내부에서 호이스팅을 발생시킴
+    let age = 20;       // 함수 내부에서 호이스팅을 발생시킴 : 호이스팅은 스코프 단위로 발생하기 때문에 두 번째 선언된 age가 호이스팅을 일으킨다
 
 }
 showAge();
@@ -88,7 +85,7 @@ showAge();
 // var : 함수 스코프(function-scoped)
 // let, const : 블록 스코프(block-scoped)
 
-// 블록 스코프(block-scoped) : 모든 코드 블록에서 선언된 변수는 코드 블록 내에서만 유효하며, 외부에서는 접근할 수 없음. 즉, 코드 블록 내부에서 선언한 변수는 지역변수라는 뜻이다. 여기서 언급한 코드블록은 함수, if문, for문, while문, try/cathc문을 의미함
+// 블록 스코프(block-scoped) : 모든 코드 블록에서 선언된 변수는 코드 블록 내에서만 유효하며, 외부에서는 접근할 수 없음. 즉, 코드 블록 내부에서 선언한 변수는 지역변수라는 뜻이다. 여기서 언급한 코드블록은 함수, if문, for문, while문, try/catch문을 의미함
 function add() {
     // Block-level Scope
 }
@@ -108,7 +105,7 @@ const age = 30;
 if(age > 19) {
     var txt = "성인";
 }
-console.log(txt);       // if문 내에서 선언된 변수(var)가 if문 외부에서 사용 가능함
+console.log(txt);       // if문 내에서 선언된 변수(var)가 if문 외부에서 사용 가능함. (let, const는 사용불가)
 
 
 

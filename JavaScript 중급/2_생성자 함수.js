@@ -9,8 +9,12 @@ let user = {
 // 생성자 함수
 
 function User(name, age) {      // 생성자 함수의 첫글자는 보통 대문자
+    // this = {}
+
     this.name = name;
     this.age = age;             // 이름과 나이를 인자로 받아 this에 대입해주고 있음
+
+    // return this;
 }
 
 // new 연산자를 이용해 함수 호출
@@ -45,7 +49,7 @@ function Item(title, price) {
 }
 
 const item1 = new Item('인형', 3000);
-const item2 = new Item('가방', 4000);   // new를 안붙이면 함수를 실행해주는 것과 같은데, Item함수는 리턴해주는 값이 없기 때문에 item2에는 undefined가 할당됨
+const item2 = Item('가방', 4000);   // new를 안붙이면 함수를 실행해주는 것과 같은데, Item함수는 리턴해주는 값이 없기 때문에 item2에는 undefined가 할당됨
 const item3 = new Item('지갑', 9000);   // 따라서 생성자 함수는 new를 붙여줘야 한다.
 
 item1.showPrice();  // 3000
